@@ -16,7 +16,7 @@
 <meta property="og:description" content="工作开发中遇到的数字精度和取值问题1、前段时间开发时遇到过php计算和取值精度不对的问题，特别记录下来。首先时浮点型的数字精度问题，由于数据库里金额设置成单精度浮点数值导致数值会有部分错误。在进行网上查询时，目前普遍答案时由于二进制转换成十进制时，有效的小数用二进制表示时无穷的。因此无论是数据库还是php本身必须进行设计好。float：单精度浮点数值；double：双精度浮点数值；decimal定">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-06T14:26:44.000Z">
-<meta property="article:modified_time" content="2021-04-06T15:00:20.162Z">
+<meta property="article:modified_time" content="2021-04-16T06:51:01.961Z">
 <meta property="article:author" content="Young">
 <meta property="article:tag" content="PHP, 后端博客, 前端博客">
 <meta name="twitter:card" content="summary">
@@ -157,7 +157,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="工作开发中遇到的数字精度和取值问题"><a href="#工作开发中遇到的数字精度和取值问题" class="headerlink" title="工作开发中遇到的数字精度和取值问题"></a>工作开发中遇到的数字精度和取值问题</h3><p>1、前段时间开发时遇到过php计算和取值精度不对的问题，特别记录下来。<br>首先时浮点型的数字精度问题，由于数据库里金额设置成单精度浮点数值导致数值会有部分错误。在进行网上查询时，目前普遍答案时由于二进制转换成十进制时，有效的小数用二进制表示时无穷的。因此无论是数据库还是php本身必须进行设计好。<br>float：单精度浮点数值；double：双精度浮点数值；decimal定点型；<br>类型名后为（M，D）M为总长度，D为小数后长度，保存时四舍五入。<br><strong>对精度要求较高场景，特别时金额时建议使用decimal做金额运算。</strong><br>2、PHP取整数函数常用的四种方法：<br>（1）直接取整，舍弃小数，保留整数：intval（）；<br>（2）四舍五入取整：round（）；<br>（3）向上取整，有小数就加1：ceil（）；<br>（4）向下取整：floor（）;<br>3、number_format()通过千分位组格式化数字;<br><?php 
+        <h3 id="工作开发中遇到的数字精度和取值问题"><a href="#工作开发中遇到的数字精度和取值问题" class="headerlink" title="工作开发中遇到的数字精度和取值问题"></a>工作开发中遇到的数字精度和取值问题</h3><p>1、前段时间开发时遇到过php计算和取值精度不对的问题，特别记录下来。<br>首先时浮点型的数字精度问题，由于数据库里金额设置成单精度浮点数值导致数值会有部分错误。在进行网上查询时，目前普遍答案时由于二进制转换成十进制时，有效的小数用二进制表示时无穷的。因此无论是数据库还是php本身必须进行设计好。<br>float：单精度浮点数值；double：双精度浮点数值；decimal定点型；<br>类型名后为（M，D）M为总长度，D为小数后长度，保存时四舍五入。<br><strong>对精度要求较高场景，特别时金额时建议使用decimal做金额运算。</strong><br>2、PHP取整数函数常用的四种方法：<br>（1）直接取整，舍弃小数，保留整数：intval（）；<br>（2）四舍五入取整：round（）；<br>（3）向上取整，有小数就加1：ceil（）；<br>（4）向下取整：floor（）;</p>
+<a id="more"></a>
+<p>3、number_format()通过千分位组格式化数字;<br><?php 
     $number = 12345.678;
     $test = number_format($number, 2, '.', '');
 ?></p>
